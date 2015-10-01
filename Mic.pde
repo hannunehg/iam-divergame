@@ -3,24 +3,19 @@ import ddf.minim.analysis.*;
 
 Minim minim;
 AudioInput in;
-FFT         fft;
+FFT  fft;
 
 double _Max = -99999.99999;
 double _AvgMicValue = 0;
 double _MicValueLowAvg;
 double _MicValueHighAvg;
 
-
 class Mic {
  
   Mic() { 
-    // mic
-    minim = new Minim(this);
-    // use the getLineIn method of the Minim object to get an AudioInput
-    in = minim.getLineIn();
-  
-    fft = new FFT( in.bufferSize(), in.sampleRate() );
+   
   }
+  
   void draw() {
     fft.forward( in.mix );
    
@@ -33,8 +28,7 @@ class Mic {
     int lowLevels = (int) (fft.specSize() * 0.1);
     int highlevels = (int) (fft.specSize() * 0.1);
     double highAvg = 0;
-    for(int i = 0; i < fft.specSize(); i++)
-    {
+    for(int i = 0; i < fft.specSize(); i++){
       if (i < lowLevels) {
         avgMicValue +=fft.getBand(i)*8;
       }

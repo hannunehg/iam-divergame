@@ -3,21 +3,23 @@ class MovingObject {
   float yMovingObject;
   float speed;
   PImage pImage;
+  
   MovingObject(PImage image, float tempX, float tempY, float tempSpeed) { 
     xMovingObject = tempX;
     yMovingObject = tempY;
     pImage = image;
     speed = tempSpeed;
   }
+  
   void move() {
      xMovingObject -= speed;
   }
+  
   void draw() {
-    
     image(pImage,xMovingObject,yMovingObject);
-    
-    //image(pImage,0,0);
+   
   }
+  
   boolean finished() {
     float newX = _DiverX + 70;
     float newY = _DiverDepthY+35;
@@ -26,12 +28,11 @@ class MovingObject {
       text((int)dist(xMovingObject,yMovingObject,newX,newY ) , xMovingObject - pImage.width/2 ,yMovingObject);
     }
     
-    
-    
     if (xMovingObject < 0 || dist(xMovingObject,yMovingObject,newX,newY ) < 24) {
       return true;
     } else {
       return false;
     }
+    
   }
 }
