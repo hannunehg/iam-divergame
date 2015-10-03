@@ -23,10 +23,10 @@ class Diver {
  
   Diver() {
     //_DiverSprites = explodeAnimation("http://www.nordenfelt-thegame.com/blog/wp-content/uploads/2011/11/explosion_transparent.png",5,5,0);
-  _DiverSwimmingSprites = explodeAnimation("C:/Users/Welcome/Dropbox/Coral/low-res/D001 copy.png",8,8,2);
-  _DiverDyingSprites = explodeAnimation("C:/Users/Welcome/Dropbox/Coral/low-res/D002 copy.png",8,8,2);
-  _DiverIdleSprites = explodeAnimation("C:/Users/Welcome/Dropbox/Coral/low-res/D003 copy.png",8,8,2);
-  _LungSprites = explodeAnimation("C:/Users/Welcome/Dropbox/Coral/lungs copy.png",40,40,520);
+  _DiverSwimmingSprites = explodeAnimation("D001 copy.png",8,8,2);
+  _DiverDyingSprites = explodeAnimation("D002 copy.png",8,8,2);
+  _DiverIdleSprites = explodeAnimation("D003 copy.png",8,8,2);
+  _LungSprites = explodeAnimation("lungs copy.png",40,40,520);
   
   _DiverX = width/2;
   }
