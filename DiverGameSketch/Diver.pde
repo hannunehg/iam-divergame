@@ -32,9 +32,10 @@ class Diver {
   }
   
   
-  int DIVING_SPEED = 5;
-  int DIVING_DEPTH_LIMIT = height - BOTTOM_LAND_HEIGHT - 10;
-  int DIVING_SURFACE_LIMIT = 88;
+  float DIVING_SPEED = 10f;
+  float UP_SPEED = 1.2f;
+  float DIVING_DEPTH_LIMIT = height - BOTTOM_LAND_HEIGHT - 10;
+  float DIVING_SURFACE_LIMIT = 88f;
   
   
   void draw() {
@@ -56,7 +57,7 @@ class Diver {
      image(_DiverSwimmingSprites[frameCount%_DiverSwimmingSprites.length],_DiverX, _DiverDepthY);   
      
    } else {
-     _DiverDepthY -= DIVING_SPEED;
+     _DiverDepthY -= UP_SPEED;
      _DiverDepthY = (_DiverDepthY < DIVING_SURFACE_LIMIT) ? DIVING_SURFACE_LIMIT : _DiverDepthY; 
       image(_DiverDyingSprites[frameCount%_DiverDyingSprites.length],_DiverX, _DiverDepthY);
    }
