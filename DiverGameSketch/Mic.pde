@@ -52,6 +52,6 @@ class Mic {
       text( "Max monitoring value " + _Max, 5, 35 );
       text( "framcount " + frameCount, 5, 55 );
       text( "fft.specSize() " + fft.specSize(), 5, 75 );
-    }
+    } 
   }
 }

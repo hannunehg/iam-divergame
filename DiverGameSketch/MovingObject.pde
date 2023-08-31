@@ -28,11 +28,14 @@ class MovingObject {
       text((int)dist(xMovingObject,yMovingObject,newX,newY ) , xMovingObject - pImage.width/2 ,yMovingObject);
     }
     
-    if (xMovingObject < 0 || dist(xMovingObject,yMovingObject,newX,newY ) < 24) {
+    if ( dist(xMovingObject,yMovingObject,newX,newY ) < 24) {
       return true;
     } else {
       return false;
     }
-    
+  }
+  
+  boolean missed() {
+    return xMovingObject < 0;
   }
 }

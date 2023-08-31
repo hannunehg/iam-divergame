@@ -40,13 +40,15 @@ class Game {
     _loopIndexY = 0;
    _MovingObjects = new ArrayList<MovingObject>();
   }
-  float _BackgroundSpeedX = 1;
+  
+  
+  float _BackgroundSpeedX = 4;
   float _BackgroundMoveReferencePositionX = 0;
   
   int _loopIndexX;
   int _loopIndexY;
   
-  int MAX_LANE_ITEMS_COUNT = 15;
+  int MAX_LANE_ITEMS_COUNT = 300;
   int LANES_COUNT = 3;
   int _MoveItemPivotX = width/MAX_LANE_ITEMS_COUNT;
   int _MoveItemPivotY = BOTTOM_LAND_HEIGHT / LANES_COUNT;
@@ -56,11 +58,15 @@ class Game {
       arrangeImage(pBottomImages[(int)random(0,pBottomImages.length)]);  
     } 
   }
+  
+  
   float surfacePlayer = 1;
   float surfaceX = 0;
+  float score=0;
+  float missed = -MAX_LANE_ITEMS_COUNT;
   
   void draw() {
-     //<>//
+ //<>//
     background(0,0,0);
     int movingSpace = 30;
     if ( frameCount%movingSpace == 0) {
@@ -74,7 +80,7 @@ class Game {
     
     image(pBoat,_BackgroundMoveReferencePositionX+ width ,pBoat.height); 
    
-    if (frameCount%30 == 0  && _MovingObjects.size() < MAX_LANE_ITEMS_COUNT) {
+    if (frameCount%10 == 0  && _MovingObjects.size() < MAX_LANE_ITEMS_COUNT) {
      positionImage(pBottomImages[(int)random(0,pBottomImages.length)]);
     }
     
@@ -82,15 +88,28 @@ class Game {
         // An ArrayList doesn't know what it is storing so we have to cast the object coming out
         MovingObject movingObject = _MovingObjects.get(i);
         movingObject.move();
-        movingObject.draw();
-        if (movingObject.finished()) {
-          // Items can be deleted with remove()
+        
+        // Items can be deleted with remove()
+  
+        if (movingObject.finished() ) {
+          score++;
           _MovingObjects.remove(i);
+          continue;
         }
-      
+        if (movingObject.missed() ) {
+          missed++;
+          _MovingObjects.remove(i);
+          continue;
+        }     
+        movingObject.draw();
       }
   
     _BackgroundMoveReferencePositionX = _BackgroundMoveReferencePositionX - _BackgroundSpeedX;
+    text( "score " + score, 5, 100 );
+    text( "missed " + missed, 5, 110 );
+
+    
+
   }
   
   void positionImage(PImage image){ //<>//

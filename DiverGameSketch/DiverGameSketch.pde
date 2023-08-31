@@ -6,10 +6,11 @@ Game _Game;
 int BOTTOM_LAND_HEIGHT = 55;
 float _DiverDepthY = 0;
 float _DiverX;
-boolean SHOW_DEBUG = true;
+boolean SHOW_DEBUG = false;
 
 void setup() {
   size(1024, 384);
+  frameRate(39);
   //noLoop();
   _Game = new Game();
   _Diver = new Diver();
@@ -17,7 +18,7 @@ void setup() {
   // init mic
   minim = new Minim(this);
   // use the getLineIn method of the Minim object to get an AudioInput
-  in = minim.getLineIn();
+  in = minim.getLineIn((Minim.MONO));
   fft = new FFT( in.bufferSize(), in.sampleRate() );
   // input object
   _Mic = new Mic();
