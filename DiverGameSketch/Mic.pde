@@ -1,19 +1,23 @@
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 
-Minim minim;
-AudioInput in;
-FFT  fft;
-
-double _Max = -99999.99999;
-double _AvgMicValue = 0;
-double _MicValueLowAvg;
-double _MicValueHighAvg;
-
 class Mic {
  
-  Mic() { 
-   
+  Minim minim;
+  AudioInput in;
+  FFT  fft;
+
+  double _Max = -99999.99999;
+  double _AvgMicValue = 0;
+  double _MicValueLowAvg;
+  double _MicValueHighAvg;
+  
+  Mic(Object main) { 
+    // init mic
+    minim = new Minim(main);
+    // use the getLineIn method of the Minim object to get an AudioInput
+    in = minim.getLineIn((Minim.MONO));
+    fft = new FFT( in.bufferSize(), in.sampleRate() );
   }
   
   void draw() {
@@ -53,5 +57,9 @@ class Mic {
       text( "framcount " + frameCount, 5, 55 );
       text( "fft.specSize() " + fft.specSize(), 5, 75 );
     } 
+    // shushing equation
+    sShush = _MicValueHighAvg > 5;
+       //if ( _MicValueLowAvg< _MicValueHighAvg)
+
   }
 }

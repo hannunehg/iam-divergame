@@ -1,32 +1,22 @@
 
-
-Diver _Diver;
-Mic _Mic;
 Game _Game;
-int BOTTOM_LAND_HEIGHT = 55;
-float _DiverDepthY = 0;
-float _DiverX;
-boolean SHOW_DEBUG = false;
+Diver _Diver;
+Lung _Lung;
+Mic _Mic;
 
 void setup() {
   size(1024, 384);
   frameRate(39);
+  
   //noLoop();
   _Game = new Game();
   _Diver = new Diver();
-
-  // init mic
-  minim = new Minim(this);
-  // use the getLineIn method of the Minim object to get an AudioInput
-  in = minim.getLineIn((Minim.MONO));
-  fft = new FFT( in.bufferSize(), in.sampleRate() );
-  // input object
-  _Mic = new Mic();
+  _Lung = new  Lung();  
+  _Mic = new Mic(this);
 }
+
 int firstTimeFlag = 0;
-
 void draw() {
-
 
   if (firstTimeFlag == 0) {
     _Game.drawOnce();
@@ -36,4 +26,5 @@ void draw() {
   _Game.draw();
   _Mic.draw();
   _Diver.draw();
+  _Lung.draw();
 }

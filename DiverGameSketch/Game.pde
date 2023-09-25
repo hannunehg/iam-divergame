@@ -1,4 +1,12 @@
+
+int BOTTOM_LAND_HEIGHT = 55;
+float _DiverDepthY = 0;
+float _DiverX;
+boolean SHOW_DEBUG = true;
+boolean sShush = false;
+
 class Game {
+  
   PImage pBackground;
   PImage pBoat;
   PImage[] pCorals;
@@ -9,6 +17,7 @@ class Game {
   PImage pSurfaceWater;
   
   Game() { 
+    
    pBackground = loadImage("BG-01.png");
    pBoat = loadImage("0003Layer-4 copy.png");
    // small - large
@@ -66,7 +75,7 @@ class Game {
   float missed = -MAX_LANE_ITEMS_COUNT;
   
   void draw() {
- //<>//
+ //<>// //<>// //<>//
     background(0,0,0);
     int movingSpace = 30;
     if ( frameCount%movingSpace == 0) {
@@ -112,7 +121,7 @@ class Game {
 
   }
   
-  void positionImage(PImage image){ //<>//
+  void positionImage(PImage image){ //<>// //<>// //<>//
     _loopIndexY += image.height ;
      _MovingObjects.add(new MovingObject(image, width, height - 30 -(_loopIndexY%(BOTTOM_LAND_HEIGHT -30 )), _BackgroundSpeedX));
     //image(image, _BackgroundMoveReferencePositionX %width + width , height - (_loopIndexY%BOTTOM_LAND_HEIGHT) );

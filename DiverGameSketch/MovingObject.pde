@@ -1,4 +1,6 @@
+
 class MovingObject {
+
   float xMovingObject;
   float yMovingObject;
   float speed;
@@ -38,4 +40,5 @@ class MovingObject {
   boolean missed() {
     return xMovingObject < 0;
   }
+  
 }
